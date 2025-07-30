@@ -17,9 +17,9 @@ func main() {
 
 	// Create application with options
 	err := wails.Run(&options.App{
-		Title:  "mailgrid-ui",
+		Title:  "mailgrid",
 		Width:  1024,
-		Height: 768,
+		Height: 720,
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},
@@ -27,10 +27,11 @@ func main() {
 		OnStartup:        app.startup,
 		Bind: []interface{}{
 			app,
+			//backend.NewMailgridService(),
 		},
 	})
 
 	if err != nil {
-		println("Error:", err.Error())
+		println("Error:", err)
 	}
 }
