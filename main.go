@@ -6,6 +6,8 @@ import (
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
+
+	"mailgrid-ui/backend"
 )
 
 //go:embed all:frontend/dist
@@ -19,7 +21,7 @@ func main() {
 	err := wails.Run(&options.App{
 		Title:  "mailgrid",
 		Width:  1024,
-		Height: 720,
+		Height:  720,
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},
@@ -27,7 +29,7 @@ func main() {
 		OnStartup:        app.startup,
 		Bind: []interface{}{
 			app,
-			//backend.NewMailgridService(),
+			backend.NewMailgridService(),
 		},
 	})
 
